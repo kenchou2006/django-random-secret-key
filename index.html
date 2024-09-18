@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Random Django Secret Key</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #secretKey {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate a Random Django Secret Key</h1>
+    <button onclick="generateSecretKey()">Generate Key</button>
+    <br>
+    <div id="secretKey"></div>
+
+    <script>
+        function generateSecretKey() {
+            const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let secretKey = 'django-insecure-';
+            for (let i = 0; i < 50; i++) {
+                secretKey += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            
+            const secretKeyDiv = document.getElementById('secretKey');
+            secretKeyDiv.textContent = secretKey;
+
+            // Show the div only after content is generated
+            secretKeyDiv.style.display = 'inline-block';
+        }
+    </script>
+</body>
+</html>
